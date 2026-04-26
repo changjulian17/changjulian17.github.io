@@ -295,6 +295,7 @@
       <a href="#about">about</a>
       <a href="#skills">skills</a>
       <a href="#projects">projects</a>
+      <a href="#sentiment">sentiment</a>
       <a href="#connect">connect</a>
     </div>
   </nav>
@@ -307,7 +308,8 @@
     <div class="tagline fade-in d3">
       Ex-aerospace engineer turned quant, building at the intersection of
       applied math, markets, and code. Currently pursuing a Masters in
-      Quantitative Finance at SMU while leading delivery at DBS Bank.
+      Quantitative Finance at SMU while leading AI, data analytics
+      and automation in DBS Global Financial Markets.
     </div>
     <div class="tags fade-in d4">
       <span>Quant Finance</span>
@@ -329,8 +331,9 @@
     <div class="section-label fade-in">// about</div>
     <p class="fade-in d1">
       I'm a <strong>Technology Delivery Lead at DBS Bank</strong> with over 4 years
-      of experience, currently pursuing my <strong>Masters of Quantitative Finance</strong>
-      at Singapore Management University (class of 2026).
+      of experience, currently driving <strong>data analytics, automation, and AI delivery</strong>
+      in <strong>DBS Global Financial Markets</strong> while pursuing my
+      <strong>Masters of Quantitative Finance</strong> at Singapore Management University (class of 2026).
     </p>
     <p class="fade-in d2">
       Before finance, I was an <strong>aerospace engineer</strong> who fell in love
@@ -470,6 +473,34 @@
         <span>C++</span><span>OOP</span><span>Options</span>
       </div>
     </div>
+  </section>
+
+  <!-- ─── Sentiment ─── -->
+  <section id="sentiment">
+    <div class="section-label fade-in">// global macro sentiment</div>
+    <p class="fade-in d1">
+      Daily batch pipeline that scrapes FinTwit, Reddit, news RSS feeds, and market data
+      to score global macro sentiment using VADER and FinBERT. Results are stored in SQLite
+      and published as a live dashboard via GitHub Actions.
+    </p>
+    <div style="margin: 1.5rem 0;" class="fade-in d2">
+      <a href="https://github.com/changjulian17/global_macro_sentiment" target="_blank" rel="noopener" class="cta-primary" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.65rem 1.25rem;border-radius:8px;font-size:0.875rem;font-weight:500;text-decoration:none;transition:all 0.2s;background:var(--accent);color:#0a0a0f;margin-bottom:1rem;">
+        &lt;/&gt; View on GitHub
+      </a>
+      <a href="https://changjulian17.github.io/global_macro_sentiment/" target="_blank" rel="noopener" class="cta-secondary" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.65rem 1.25rem;border-radius:8px;font-size:0.875rem;font-weight:500;text-decoration:none;transition:all 0.2s;background:var(--surface);color:var(--text);border:1px solid var(--border);margin-left:0.5rem;">
+        ↗ Live Dashboard
+      </a>
+    </div>
+    <div class="fade-in d3" style="border-radius:10px;overflow:hidden;border:1px solid var(--border);background:var(--card);">
+      <iframe src="https://changjulian17.github.io/global_macro_sentiment/"
+              style="width:100%;height:600px;border:none;"
+              title="Global Macro Sentiment Dashboard"
+              loading="lazy">
+      </iframe>
+    </div>
+    <p class="fade-in d4" style="font-size:0.8rem;color:var(--text-muted);margin-top:0.75rem;">
+      Auto-updates daily via GitHub Actions. Sources: FinTwit (Nitter RSS), Reddit, News RSS, Yahoo Finance.
+    </p>
   </section>
 
   <!-- ─── Connect ─── -->
