@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Julian Chang</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --border: #1e1e2a;
+      --text: #e4e4ec;
+      --text-muted: #7a7a8a;
+      --accent: #22c55e;
+      --accent-dim: rgba(34, 197, 94, 0.15);
+      --accent-glow: rgba(34, 197, 94, 0.08);
+      --card: #14141e;
+      --card-hover: #1a1a28;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::selection { background: var(--accent); color: #0a0a0f; }
+
+    /* ─── Scrollbar ─── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    /* ─── Nav ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(10, 10, 15, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    nav .logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem; font-weight: 500;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+    }
+    nav .logo::before { content: "~ $ "; color: var(--text-muted); }
+    nav .links { display: flex; gap: 1.75rem; }
+    nav .links a {
+      color: var(--text-muted); text-decoration: none;
+      font-size: 0.875rem; font-weight: 400;
+      transition: color 0.2s;
+    }
+    nav .links a:hover { color: var(--text); }
+
+    /* ─── Sections ─── */
+    section { max-width: 720px; margin: 0 auto; padding: 5rem 1.5rem; }
+
+    /* ─── Hero ─── */
+    #hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding-top: 80px;
+    }
+    #hero .terminal-line {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem; color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+    #hero h1 {
+      font-size: 3rem; font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+    #hero .title-line {
+      font-size: 1.1rem; font-weight: 400;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    #hero .blink {
+      display: inline-block;
+      width: 2px; height: 1.2em;
+      background: var(--accent);
+      margin-left: 2px;
+      animation: blink 1s step-end infinite;
+      vertical-align: text-bottom;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    #hero .tagline {
+      font-size: 0.95rem; color: var(--text-muted);
+      max-width: 520px; margin-bottom: 2rem;
+    }
+    #hero .tags {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      margin-bottom: 2.5rem;
+    }
+    #hero .tags span {
+      font-size: 0.75rem; font-weight: 500;
+      padding: 0.3rem 0.7rem;
+      border-radius: 100px;
+      background: var(--accent-dim);
+      color: var(--accent);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+    }
+
+    .cta-buttons { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .cta-buttons a {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.65rem 1.25rem;
+      border-radius: 8px;
+      font-size: 0.875rem; font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .cta-primary {
+      background: var(--accent); color: #0a0a0f;
+    }
+    .cta-primary:hover { background: #16a34a; }
+    .cta-secondary {
+      background: var(--surface); color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .cta-secondary:hover { background: var(--card-hover); border-color: var(--text-muted); }
+
+    /* ─── Section headers ─── */
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem; font-weight: 500;
+      color: var(--accent); text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ─── About ─── */
+    #about p {
+      font-size: 0.95rem; color: var(--text-muted);
+      margin-bottom: 1rem; max-width: 620px;
+    }
+    #about p strong { color: var(--text); font-weight: 500; }
+
+    .bullet-list { margin: 1.5rem 0; list-style: none; }
+    .bullet-list li {
+      position: relative; padding-left: 1.25rem;
+      font-size: 0.9rem; color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+    .bullet-list li::before {
+      content: "▸"; position: absolute; left: 0;
+      color: var(--accent);
+    }
+
+    /* ─── Skills ─── */
+    .skill-group { margin-bottom: 1.75rem; }
+    .skill-group h3 {
+      font-size: 0.8rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.06em; color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+    .skill-chips {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+    }
+    .skill-chip {
+      font-size: 0.8rem; font-weight: 400;
+      padding: 0.35rem 0.8rem;
+      border-radius: 6px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      transition: all 0.2s;
+      cursor: default;
+    }
+    .skill-chip:hover {
+      border-color: var(--accent);
+      background: var(--accent-dim);
+    }
+
+    /* ─── Projects ─── */
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+      transition: all 0.2s;
+    }
+    .project-card:hover {
+      border-color: rgba(34, 197, 94, 0.3);
+      background: var(--card-hover);
+    }
+    .project-card h3 {
+      font-size: 1rem; font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    .project-card .project-sub {
+      font-size: 0.8rem; color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 0.5rem;
+    }
+    .project-card p {
+      font-size: 0.85rem; color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+    .project-card a {
+      color: var(--accent); text-decoration: none;
+      font-size: 0.85rem; font-weight: 500;
+    }
+    .project-card a:hover { text-decoration: underline; }
+    .project-card .proj-tags {
+      display: flex; flex-wrap: wrap; gap: 0.35rem;
+      margin-top: 0.6rem;
+    }
+    .project-card .proj-tags span {
+      font-size: 0.7rem; padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      background: var(--surface);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+
+    /* ─── Connect ─── */
+    .connect-grid {
+      display: flex; flex-wrap: wrap; gap: 0.75rem;
+    }
+    .connect-grid a {
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: all 0.2s;
+    }
+    .connect-grid a:hover {
+      background: var(--card-hover);
+      border-color: var(--accent);
+    }
+    .connect-grid a .icon-badge {
+      width: 20px; height: 20px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 4px;
+      font-size: 0.75rem;
+    }
+
+    /* ─── Footer ─── */
+    footer {
+      text-align: center;
+      padding: 2rem 1.5rem 3rem;
+      font-size: 0.75rem; color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      max-width: 720px; margin: 0 auto;
+    }
+    footer span { font-family: 'JetBrains Mono', monospace; }
+    footer .footer-line { margin-top: 0.5rem; font-size: 0.7rem; }
+
+    /* ─── Animations ─── */
+    .fade-in {
+      opacity: 0; transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.show { opacity: 1; transform: translateY(0); }
+    .fade-in.d1 { transition-delay: 0.05s; }
+    .fade-in.d2 { transition-delay: 0.1s; }
+    .fade-in.d3 { transition-delay: 0.15s; }
+    .fade-in.d4 { transition-delay: 0.2s; }
+    .fade-in.d5 { transition-delay: 0.25s; }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 600px) {
+      nav .links { gap: 1rem; }
+      nav .links a { font-size: 0.8rem; }
+      #hero h1 { font-size: 2.25rem; }
+      section { padding: 3rem 1.25rem; }
+      .connect-grid a { flex: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Nav ─── -->
+  <nav>
+    <div class="logo">changjulian</div>
+    <div class="links">
+      <a href="#about">about</a>
+      <a href="#skills">skills</a>
+      <a href="#projects">projects</a>
+      <a href="#connect">connect</a>
+    </div>
+  </nav>
+
+  <!-- ─── Hero ─── -->
+  <section id="hero">
+    <div class="terminal-line fade-in">$ whoami</div>
+    <h1 class="fade-in d1">Julian Chang<span class="blink"></span></h1>
+    <div class="title-line fade-in d2">Technology Delivery Lead · Quant Student</div>
+    <div class="tagline fade-in d3">
+      Ex-aerospace engineer turned quant, building at the intersection of
+      applied math, markets, and code. Currently pursuing a Masters in
+      Quantitative Finance at SMU while leading delivery at DBS Bank.
+    </div>
+    <div class="tags fade-in d4">
+      <span>Quant Finance</span>
+      <span>Python</span>
+      <span>C++</span>
+      <span>Machine Learning</span>
+      <span>HFT</span>
+      <span>Derivatives</span>
+      <span>Macro Trading</span>
+    </div>
+    <div class="cta-buttons fade-in d5">
+      <a href="#projects" class="cta-primary">→ View Projects</a>
+      <a href="#connect" class="cta-secondary">Connect</a>
+    </div>
+  </section>
+
+  <!-- ─── About ─── -->
+  <section id="about">
+    <div class="section-label fade-in">// about</div>
+    <p class="fade-in d1">
+      I'm a <strong>Technology Delivery Lead at DBS Bank</strong> with over 4 years
+      of experience, currently pursuing my <strong>Masters of Quantitative Finance</strong>
+      at Singapore Management University (class of 2026).
+    </p>
+    <p class="fade-in d2">
+      Before finance, I was an <strong>aerospace engineer</strong> who fell in love
+      with data science — I completed General Assembly's Data Science Immersive in 2021
+      and never looked back.
+    </p>
+    <p class="fade-in d3">
+      My mission is to combine two lifelong passions: <strong>investing</strong> and
+      <strong>applied mathematics</strong>. When I'm not pricing derivatives or building
+      trading strategies, you'll find me following global macro markets, playing rugby,
+      or cheering for Onosato in sumo.
+    </p>
+    <ul class="bullet-list fade-in d4">
+      <li>🎓 SMU MQF — Stochastic calculus, HFT, fixed income, options pricing</li>
+      <li>🏦 DBS Bank — Tech delivery, platform engineering</li>
+      <li>📈 Global macro trader — part-time, passion-driven</li>
+      <li>🐍 Python & C++ quant toolkit — numpy, PyTorch, FastAPI, sklearn</li>
+      <li>🤓 Physics & philosophy enjoyer</li>
+    </ul>
+  </section>
+
+  <!-- ─── Skills ─── -->
+  <section id="skills">
+    <div class="section-label fade-in">// skills</div>
+
+    <div class="skill-group fade-in d1">
+      <h3>Languages</h3>
+      <div class="skill-chips">
+        <span class="skill-chip">Python</span>
+        <span class="skill-chip">C++</span>
+        <span class="skill-chip">Scala</span>
+        <span class="skill-chip">SQL</span>
+        <span class="skill-chip">Bash</span>
+      </div>
+    </div>
+
+    <div class="skill-group fade-in d2">
+      <h3>Quant & Data</h3>
+      <div class="skill-chips">
+        <span class="skill-chip">numpy / pandas</span>
+        <span class="skill-chip">PyTorch</span>
+        <span class="skill-chip">sklearn</span>
+        <span class="skill-chip">stable-baseline3</span>
+        <span class="skill-chip">FastAPI</span>
+        <span class="skill-chip">Tableau</span>
+      </div>
+    </div>
+
+    <div class="skill-group fade-in d3">
+      <h3>Infrastructure</h3>
+      <div class="skill-chips">
+        <span class="skill-chip">Docker</span>
+        <span class="skill-chip">Unix</span>
+        <span class="skill-chip">Spark</span>
+        <span class="skill-chip">Kafka</span>
+        <span class="skill-chip">Git</span>
+      </div>
+    </div>
+
+    <div class="skill-group fade-in d4">
+      <h3>Quant Finance</h3>
+      <div class="skill-chips">
+        <span class="skill-chip">Options Pricing</span>
+        <span class="skill-chip">SABR Model</span>
+        <span class="skill-chip">Vasicek / Hull-White</span>
+        <span class="skill-chip">Monte Carlo</span>
+        <span class="skill-chip">Binomial Trees</span>
+        <span class="skill-chip">HFT Strategies</span>
+        <span class="skill-chip">Dynamic Hedging</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Projects ─── -->
+  <section id="projects">
+    <div class="section-label fade-in">// projects</div>
+
+    <div class="project-card fade-in d1">
+      <h3>QF621 — High Frequency Trading</h3>
+      <div class="project-sub">SMU MQF coursework</div>
+      <p>HFT strategy analysis with order book simulation, microstructure modeling, and backtesting framework implementation.</p>
+      <div class="proj-tags">
+        <span>HFT</span><span>Market Microstructure</span><span>Python</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-in d2">
+      <h3>Fixed Income & Derivatives Suite</h3>
+      <div class="project-sub">QF605 — SMU MQF</div>
+      <p>Swap curve bootstrapping, IRS pricing, forward swaps, no-arbitrage forward pricing with collateralised rates. Vasicek, Ho-Lee, Hull-White short rate models and convexity correction.</p>
+      <div class="proj-tags">
+        <span>Fixed Income</span><span>Swaps</span><span>Python</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-in d3">
+      <h3>Stochastic Methods — Exotic Options</h3>
+      <div class="project-sub">QF620 — SMU MQF</div>
+      <p>Binomial trees, Brownian motion simulation, exotic option pricing via Monte Carlo, Carr-Madan model-free pricing, SABR calibration, Black-Scholes dynamic hedging with tracking error analysis.</p>
+      <div class="proj-tags">
+        <span>Stochastic Calculus</span><span>Options</span><span>SABR</span><span>Monte Carlo</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-in d4">
+      <h3>Automated Portfolio Allocator</h3>
+      <div class="project-sub">Deep Reinforcement Learning</div>
+      <p>Portfolio optimization using FinRL and stable-baseline3 with PPO. Efficient frontier analysis and Monte Carlo simulations for allocation strategies.</p>
+      <div class="proj-tags">
+        <span>DRL</span><span>PPO</span><span>FinRL</span><span>Portfolio Theory</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-in d5">
+      <h3>NLP — Reddit Classification</h3>
+      <div class="project-sub">Data Science Portfolio</div>
+      <p>TF-IDF, CountVectoriser, and RandomForest-based classification on Reddit posts. End-to-end NLP pipeline with sklearn.</p>
+      <div class="proj-tags">
+        <span>NLP</span><span>sklearn</span><span>Python</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-in d5">
+      <h3>HDB Resale Analysis</h3>
+      <div class="project-sub">Data Science Portfolio</div>
+      <p>Singapore HDB resale price analysis using RandomForest regression, K-clustering, and difference-in-difference modeling. Interactive Tableau dashboard.</p>
+      <div class="proj-tags">
+        <span>Regression</span><span>Clustering</span><span>Tableau</span><span>DiD</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-in d5">
+      <h3>C++ Options Pricing</h3>
+      <div class="project-sub">QF633 — SMU MQF</div>
+      <p>Object-oriented options pricing framework in C++. Implements various payoff structures and pricing models with clean OOP architecture.</p>
+      <div class="proj-tags">
+        <span>C++</span><span>OOP</span><span>Options</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Connect ─── -->
+  <section id="connect">
+    <div class="section-label fade-in">// connect</div>
+    <div class="connect-grid fade-in d1">
+      <a href="https://github.com/changjulian17" target="_blank" rel="noopener">
+        <span class="icon-badge" style="background:#333;color:#fff;">&lt;/&gt;</span>
+        GitHub
+      </a>
+      <a href="https://www.linkedin.com/in/julian-chang/" target="_blank" rel="noopener">
+        <span class="icon-badge" style="background:#0a66c2;color:#fff;">in</span>
+        LinkedIn
+      </a>
+      <a href="https://medium.com/@changjulian17" target="_blank" rel="noopener">
+        <span class="icon-badge" style="background:#fff;color:#000;">M</span>
+        Medium
+      </a>
+      <a href="https://public.tableau.com/app/profile/julian.chang" target="_blank" rel="noopener">
+        <span class="icon-badge" style="background:#1a6ba0;color:#fff;">Tb</span>
+        Tableau Public
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <span>~ $ echo "built with 🚀"</span>
+    <div class="footer-line">© 2026 Julian Chang · changjulian.cloud</div>
+  </footer>
+
+  <script>
+    // Intersection Observer for fade-in
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
