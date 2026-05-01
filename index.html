@@ -473,6 +473,24 @@
         <span>C++</span><span>OOP</span><span>Options</span>
       </div>
     </div>
+
+    <div class="project-card fade-in d5">
+      <h3><a href="https://changjulian.cloud/expected-return/" target="_blank" rel="noopener" style="color:var(--text);text-decoration:none;">Expected Returns Dashboard ↗</a></h3>
+      <div class="project-sub">Mag 7 + SPY — 3 Methods</div>
+      <p>Daily CAPM+CRP, Total Return (div+buyback+growth), and FCFF DCF IRR estimates for Mag 7 and SPY. Interactive Plotly dashboard with spread analysis across all 3 methods.</p>
+      <div class="proj-tags">
+        <span>Expected Returns</span><span>CAPM</span><span>DCF</span><span>Python</span><span>Plotly</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-in d5">
+      <h3><a href="https://changjulian.cloud/expected-return/sentiment/" target="_blank" rel="noopener" style="color:var(--text);text-decoration:none;">Trader Checklist Sentiment ↗</a></h3>
+      <div class="project-sub">Global Macro Sentiment — Personal Checklist Overlay</div>
+      <p>Tracks daily sentiment from TraderChecklist views and CoT results, overlaid with SPY daily returns. Dark-themed Plotly dashboard with rolling averages and rangeslider zoom.</p>
+      <div class="proj-tags">
+        <span>Sentiment</span><span>Macro</span><span>TraderChecklist</span><span>SPY Overlay</span>
+      </div>
+    </div>
   </section>
 
   <!-- ─── Sentiment ─── -->
@@ -483,26 +501,40 @@
       to score global macro sentiment using VADER and FinBERT. Results are stored in SQLite
       and published as a live dashboard via GitHub Actions.
     </p>
-    <div style="margin: 1.5rem 0;" class="fade-in d2">
-      <a href="https://github.com/changjulian17/global_macro_sentiment" target="_blank" rel="noopener" class="cta-primary" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.65rem 1.25rem;border-radius:8px;font-size:0.875rem;font-weight:500;text-decoration:none;transition:all 0.2s;background:var(--accent);color:#0a0a0f;margin-bottom:1rem;">
+
+    <div class="fade-in d2" style="margin-bottom:1rem;">
+      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.75rem;"><strong style="color:var(--text);">FinTwit/Reddit Sentiment</strong> — VADER + FinBERT</p>
+      <a href="https://github.com/changjulian17/global_macro_sentiment" target="_blank" rel="noopener" class="cta-primary" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.65rem 1.25rem;border-radius:8px;font-size:0.875rem;font-weight:500;text-decoration:none;transition:all 0.2s;background:var(--accent);color:#0a0a0f;">
         &lt;/&gt; View on GitHub
       </a>
-      <a href="https://changjulian17.github.io/global_macro_sentiment/" target="_blank" rel="noopener" class="cta-secondary" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.65rem 1.25rem;border-radius:8px;font-size:0.875rem;font-weight:500;text-decoration:none;transition:all 0.2s;background:var(--surface);color:var(--text);border:1px solid var(--border);margin-left:0.5rem;">
+      <a href="https://changjulian17.github.io/global_macro_sentiment/" target="_blank" rel="noopener" class="cta-secondary" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.65rem 1.25rem;border-radius:8px;font-size:0.875rem;font-weight:500;text-decoration:none;transition:all 0.2s;background:var(--surface);color:var(--text);border:1px solid var(--border);">
         ↗ Live Dashboard
       </a>
-      <a href="https://github.com/changjulian17/global_macro_sentiment/actions/workflows/deploy-pages.yml" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.65rem 1.25rem;border-radius:8px;font-size:0.875rem;font-weight:500;text-decoration:none;transition:all 0.2s;background:var(--surface);color:var(--accent);border:1px solid var(--accent);margin-left:0.5rem;">
-        ▶ Run Pipeline
-      </a>
     </div>
+
     <div class="fade-in d3" style="border-radius:10px;overflow:hidden;border:1px solid var(--border);background:var(--card);">
       <iframe src="https://changjulian17.github.io/global_macro_sentiment/"
-              style="width:100%;height:600px;border:none;"
-              title="Global Macro Sentiment Dashboard"
+              style="width:100%;height:400px;border:none;"
+              title="FinTwit/Reddit Sentiment"
               loading="lazy">
       </iframe>
     </div>
-    <p class="fade-in d4" style="font-size:0.8rem;color:var(--text-muted);margin-top:0.75rem;">
-      Auto-updates daily via GitHub Actions. Sources: FinTwit (Nitter RSS), Reddit, News RSS, Yahoo Finance.
+
+    <hr style="border:none;border-top:1px solid var(--border);margin:1.5rem 0;">
+
+    <div class="fade-in d4">
+      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.75rem;"><strong style="color:var(--text);">Trader Checklist Sentiment</strong> — Personal View + CoT Scores</p>
+      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.75rem;">
+        Aggregates daily view scores from TraderChecklists and CoT results (Bullish=+1, Flat/Neutral=0, Bearish=-1).
+        Overlayed with SPY daily returns for cross-reference. Updates on demand.
+      </p>
+      <a href="https://changjulian.cloud/expected-return/sentiment/" target="_blank" rel="noopener" class="cta-secondary" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.65rem 1.25rem;border-radius:8px;font-size:0.875rem;font-weight:500;text-decoration:none;transition:all 0.2s;background:var(--surface);color:var(--accent);border:1px solid var(--accent);">
+        ↗ Tracker Checklist Sentiment Dashboard
+      </a>
+    </div>
+
+    <p class="fade-in d5" style="font-size:0.8rem;color:var(--text-muted);margin-top:0.75rem;">
+      FinTwit/Reddit: Auto-updates daily via GitHub Actions. Tracker Checklist: On-demand via OpenClaw pipeline.
     </p>
   </section>
 
