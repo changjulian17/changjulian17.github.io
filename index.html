@@ -297,6 +297,7 @@
       <a href="#projects">projects</a>
       <a href="#returns">returns</a>
       <a href="#sentiment">sentiment</a>
+      <a href="#journal">journal</a>
       <a href="#connect">connect</a>
     </div>
   </nav>
@@ -492,6 +493,15 @@
         <span>Sentiment</span><span>Macro</span><span>TraderChecklist</span><span>SPY Overlay</span>
       </div>
     </div>
+
+    <div class="project-card fade-in d5">
+      <h3><a href="https://changjulian.cloud/trading-journal/" target="_blank" rel="noopener" style="color:var(--text);text-decoration:none;">Trading Journal — Daily Risk ↗</a></h3>
+      <div class="project-sub">Position sizing, stop tracking, snapshot journal</div>
+      <p>Client-side trading journal that tracks simple and hedged/options positions with automatic risk calculations. Stores daily snapshots in a GitHub repo. Features position sizing via risk-dollar budgeting, R/R ratios, and historical snapshot management with load/clone/import/export.</p>
+      <div class="proj-tags">
+        <span>Risk Management</span><span>Position Sizing</span><span>Options</span><span>JavaScript</span>
+      </div>
+    </div>
   </section>
 
   <!-- ─── Expected Returns ─── -->
@@ -570,6 +580,39 @@
 
     <p class="fade-in d5" style="font-size:0.8rem;color:var(--text-muted);margin-top:0.75rem;">
       FinTwit/Reddit: Auto-updates daily via GitHub Actions. Tracker Checklist: On-demand via OpenClaw pipeline.
+    </p>
+  </section>
+
+  <!-- ─── Trading Journal ─── -->
+  <section id="journal">
+    <div class="section-label fade-in">// trading journal</div>
+    <p class="fade-in d1">
+      Daily trading journal for tracking position sizing, stop losses, and risk exposure.
+      Supports <strong>simple positions</strong> (single stop — auto-computes position size and cost basis from risk-dollar budget)
+      and <strong>hedged / options positions</strong> (two-leg stops with delta-adjusted cash exposure).
+      All data syncs to your GitHub repo for persistence across devices — nothing stored server-side.
+    </p>
+
+    <div class="fade-in d2" style="margin-bottom:1rem;">
+      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.75rem;"><strong style="color:var(--text);">Trading Journal</strong> — Daily Risk Tracker</p>
+      <a href="https://github.com/changjulian17/trading-journal" target="_blank" rel="noopener" class="cta-primary" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.65rem 1.25rem;border-radius:8px;font-size:0.875rem;font-weight:500;text-decoration:none;transition:all 0.2s;background:var(--accent);color:#0a0a0f;">
+        &lt;/&gt; View on GitHub
+      </a>
+      <a href="https://changjulian.cloud/trading-journal/" target="_blank" rel="noopener" class="cta-secondary" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.65rem 1.25rem;border-radius:8px;font-size:0.875rem;font-weight:500;text-decoration:none;transition:all 0.2s;background:var(--surface);color:var(--text);border:1px solid var(--border);">
+        ↗ Open Journal
+      </a>
+    </div>
+
+    <div class="fade-in d3" style="border-radius:10px;overflow:hidden;border:1px solid var(--border);background:var(--card);">
+      <iframe src="https://changjulian.cloud/trading-journal/"
+              style="width:100%;height:500px;border:none;"
+              title="Trading Journal"
+              loading="lazy">
+      </iframe>
+    </div>
+
+    <p class="fade-in d4" style="font-size:0.8rem;color:var(--text-muted);margin-top:0.75rem;">
+      Credentials stored locally in your browser. Snapshots are saved to <code>snapshots.json</code> in the trading-journal repo.
     </p>
   </section>
 
