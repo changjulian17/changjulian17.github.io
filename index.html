@@ -296,6 +296,7 @@
       <a href="#skills">skills</a>
       <a href="#projects">projects</a>
       <a href="#returns">returns</a>
+      <a href="#volatility">volatility</a>
       <a href="#sentiment">sentiment</a>
       <a href="#journal">journal</a>
       <a href="#connect">connect</a>
@@ -502,6 +503,15 @@
         <span>Risk Management</span><span>Position Sizing</span><span>Options</span><span>JavaScript</span>
       </div>
     </div>
+
+    <div class="project-card fade-in d5">
+      <h3><a href="https://changjulian.cloud/volatility/" target="_blank" rel="noopener" style="color:var(--text);text-decoration:none;">Volatility & Expected Move Analyzer ↗</a></h3>
+      <div class="project-sub">Pyodide-powered browser analysis</div>
+      <p>Client-side volatility dashboard that computes Historical Vol, GARCH/EWMA forecast, and Implied Vol from live option chains. All calculations run in-browser via Pyodide WASM — no server needed.</p>
+      <div class="proj-tags">
+        <span>Volatility</span><span>Pyodide</span><span>WebAssembly</span><span>Options</span>
+      </div>
+    </div>
   </section>
 
   <!-- ─── Expected Returns ─── -->
@@ -535,6 +545,40 @@
 
     <p class="fade-in d4" style="font-size:0.8rem;color:var(--text-muted);margin-top:0.75rem;">
       Auto-updates daily. Covers AAPL, MSFT, GOOGL, AMZN, META, NVDA, TSLA, and SPY.
+    </p>
+  </section>
+
+  <!-- ─── Volatility ─── -->
+  <section id="volatility">
+    <div class="section-label fade-in">// volatility & expected move</div>
+    <p class="fade-in d1">
+      Live volatility analysis powered by <strong>Pyodide</strong> (Python WASM in the browser).
+      Fetches real-time close prices and option chains from Yahoo Finance, then computes
+      <strong>30-day Historical Volatility</strong>, <strong>EWMA/GARCH forecast vol</strong>,
+      and <strong>ATM Implied Volatility</strong> from the nearest expiry.
+      All calculations run client-side — no backend required.
+    </p>
+
+    <div class="fade-in d2" style="margin-bottom:1rem;">
+      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.75rem;"><strong style="color:var(--text);">Volatility & Expected Move</strong> — Client-side Pyodide</p>
+      <a href="https://github.com/changjulian17/volatility" target="_blank" rel="noopener" class="cta-primary" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.65rem 1.25rem;border-radius:8px;font-size:0.875rem;font-weight:500;text-decoration:none;transition:all 0.2s;background:var(--accent);color:#0a0a0f;">
+        &lt;/&gt; View on GitHub
+      </a>
+      <a href="https://changjulian.cloud/volatility/" target="_blank" rel="noopener" class="cta-secondary" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.65rem 1.25rem;border-radius:8px;font-size:0.875rem;font-weight:500;text-decoration:none;transition:all 0.2s;background:var(--surface);color:var(--text);border:1px solid var(--border);">
+        ↗ Live Dashboard
+      </a>
+    </div>
+
+    <div class="fade-in d3" style="border-radius:10px;overflow:hidden;border:1px solid var(--border);background:var(--card);">
+      <iframe src="https://changjulian.cloud/volatility/"
+              style="width:100%;height:500px;border:none;"
+              title="Volatility & Expected Move Analyzer"
+              loading="lazy">
+      </iframe>
+    </div>
+
+    <p class="fade-in d4" style="font-size:0.8rem;color:var(--text-muted);margin-top:0.75rem;">
+      Enter any ticker to see Historical Vol, GARCH proxy, Implied Vol, and Expected One-Day Move.
     </p>
   </section>
 
