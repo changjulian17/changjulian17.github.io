@@ -496,9 +496,9 @@
     </div>
 
     <div class="project-card fade-in d5">
-      <h3><a href="https://changjulian.cloud/trading-journal/" target="_blank" rel="noopener" style="color:var(--text);text-decoration:none;">Trading Journal — Daily Risk ↗</a></h3>
+      <h3><a href="https://journal.changjulian.cloud/view" target="_blank" rel="noopener" style="color:var(--text);text-decoration:none;">Trading Journal — Daily Risk ↗</a></h3>
       <div class="project-sub">Position sizing, stop tracking, snapshot journal</div>
-      <p>Client-side trading journal that tracks simple and hedged/options positions with automatic risk calculations. Stores daily snapshots in a GitHub repo. Features position sizing via risk-dollar budgeting, R/R ratios, and historical snapshot management with load/clone/import/export.</p>
+      <p>Self-hosted trading journal that tracks simple and hedged/options positions with automatic risk calculations. Real Node/Express backend with server-side storage behind a login. Features position sizing via risk-dollar budgeting, R/R ratios, and historical snapshot management with load/import/export. Linked here is a public, read-only view.</p>
       <div class="proj-tags">
         <span>Risk Management</span><span>Position Sizing</span><span>Options</span><span>JavaScript</span>
       </div>
@@ -634,7 +634,8 @@
       Daily trading journal for tracking position sizing, stop losses, and risk exposure.
       Supports <strong>simple positions</strong> (single stop — auto-computes position size and cost basis from risk-dollar budget)
       and <strong>hedged / options positions</strong> (two-leg stops with delta-adjusted cash exposure).
-      All data syncs to your GitHub repo for persistence across devices — nothing stored server-side.
+      Self-hosted on a VPS behind a real Node/Express backend — data is saved server-side to a
+      Docker volume, gated behind a login. The embed below is a public, read-only view.
     </p>
 
     <div class="fade-in d2" style="margin-bottom:1rem;">
@@ -642,13 +643,13 @@
       <a href="https://github.com/changjulian17/trading-journal" target="_blank" rel="noopener" class="cta-primary" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.65rem 1.25rem;border-radius:8px;font-size:0.875rem;font-weight:500;text-decoration:none;transition:all 0.2s;background:var(--accent);color:#0a0a0f;">
         &lt;/&gt; View on GitHub
       </a>
-      <a href="https://changjulian.cloud/trading-journal/" target="_blank" rel="noopener" class="cta-secondary" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.65rem 1.25rem;border-radius:8px;font-size:0.875rem;font-weight:500;text-decoration:none;transition:all 0.2s;background:var(--surface);color:var(--text);border:1px solid var(--border);">
+      <a href="https://journal.changjulian.cloud/view" target="_blank" rel="noopener" class="cta-secondary" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.65rem 1.25rem;border-radius:8px;font-size:0.875rem;font-weight:500;text-decoration:none;transition:all 0.2s;background:var(--surface);color:var(--text);border:1px solid var(--border);">
         ↗ Open Journal
       </a>
     </div>
 
     <div class="fade-in d3" style="border-radius:10px;overflow:hidden;border:1px solid var(--border);background:var(--card);">
-      <iframe src="https://changjulian.cloud/trading-journal/"
+      <iframe src="https://journal.changjulian.cloud/view"
               style="width:100%;height:500px;border:none;"
               title="Trading Journal"
               loading="lazy">
@@ -656,7 +657,8 @@
     </div>
 
     <p class="fade-in d4" style="font-size:0.8rem;color:var(--text-muted);margin-top:0.75rem;">
-      Credentials stored locally in your browser. Snapshots are saved to <code>snapshots.json</code> in the trading-journal repo.
+      Read-only — no login, no editing, nothing you do here gets saved. The full editable app lives
+      behind a password on the same domain.
     </p>
   </section>
 
